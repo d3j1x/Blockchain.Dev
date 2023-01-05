@@ -1,0 +1,22 @@
+
+npm install -g truffle
+
+truffle version
+
+truffle
+
+truffle init   /==>/  truffle unbox 
+
+truffle create contract FavoriteNumber
+
+// npm install solc@0.8.9
+
+truffle create migration FavoriteNumber
+
+truffle compile
+
+truffle develop
+
+migrate
+
+test test/FavoriteNumber.js

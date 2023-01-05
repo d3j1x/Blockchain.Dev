@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="node_modules/web3.js-browser/build/web3.min.js"></script>
+</head>
+<body>
+
+    <div id="accounts">
+
+    </div>
+
+    <br/>
+
+    <div id="nbrFavoris">
+
+    </div>
+
+    <script>
+        let accounts = document.getElementById('accounts');
+        let nbrFavoris = document.getElementById('nbrFavoris');
+
+        const init = async() => {
+            let web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:7545'));
+            web3.eth.getAccounts().then(function(allAccounts) {
+                for(let i = 0; i < allAccounts.length; i++){
+                    accounts.innerHTML += allAccounts[i]+ '<br />';
+                }
+            })
+
+            let contract = new web3.eth.Contract([
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_nbrFavoris",
+				"type": "uint256"
+			}
+		],
+		"name": "setNbrFavoris",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "nbrFavoris",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+], "0x1b5214a0CfA357d71439c75D9D62E696E673bbd9");
+
+            async function getNbrFavoris() {
+                const leNbrFavoris = await contract.methods.nbrFavoris().call()
+                .then(receipt => {
+                    nbrFavoris.innerHTML = receipt;
+                })
+                .catch(error => {
+                    alert('Erreur !!')
+                })
+            }
+
+            getNbrFavoris();
+        }
+
+        init();
+    </script>
+    
+</body>
+</html>

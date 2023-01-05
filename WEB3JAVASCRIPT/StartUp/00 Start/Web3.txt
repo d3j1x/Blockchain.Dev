@@ -1,12 +1,25 @@
 // StartUp
+
 npm init
+
+npm install --save web3
+
 node
+
 let Web3 = require('web3');
+
 Web3
+
 let web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:7545'));
+
 web3
+
 web3.eth.getBalance('0xE8F99Ab1908cfa321ee4063429151a5428CaFEd8');
+
 web3.eth.getBalance('0xE8F99Ab1908cfa321ee4063429151a5428CaFEd8').then(console.log)
+
 web3.eth.getBalance('0xE8F99Ab1908cfa321ee4063429151a5428CaFEd8').then(function(res) { console.log(web3.utils.fromWei(res,"ether")); })
+
 web3.eth.sendTransaction({from: '', to: '', value: web3.utils.toWei("5","ether")});
+
 web3.eth.sendTransaction({from: '0xE8F99Ab1908cfa321ee4063429151a5428CaFEd8', to: '0x878abD14bbe9f7Eeb5e97A610BDBE4F91fd0C64b', value: web3.utils.toWei("5","ether")});
