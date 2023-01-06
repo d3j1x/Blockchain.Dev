@@ -1,0 +1,23 @@
+
+npm install -g truffle
+
+truffle version
+
+truffle
+
+truffle unbox 
+
+truffle create contract MusiciansManager
+
+
+
+
+truffle create migration MusiciansManager
+
+truffle compile
+
+truffle develop
+
+migrate
+
+test test/MusiciansManager.js
